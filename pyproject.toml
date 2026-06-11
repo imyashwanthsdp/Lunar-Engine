@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lunar-system"
+version = "0.1.2"
+description = "AI-powered API testing CLI framework"
+authors = [{ name = "Yash" }]
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+    "requests",
+    "huggingface_hub",
+    "python-dotenv"
+]
+
+[project.scripts]
+lunar = "lunar.cli:main"

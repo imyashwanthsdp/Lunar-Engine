@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Basic status check",
+        "endpoint": "/pages",
+        "method": "GET",
+        "assertions": {
+            "status_code": 200,
+            "json_keys": []
+        }
+    }
+]
