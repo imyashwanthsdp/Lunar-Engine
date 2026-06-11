@@ -1,4 +1,4 @@
-# 🚀 Lunar
+#  Lunar
 
 **AI-Powered High-Tech API Testing & Performance Benchmarking CLI Framework**
 
@@ -8,7 +8,7 @@ It combines automated schema discovery, AI-powered multi-method test suite gener
 
 ---
 
-## ✨ Features
+##  Features
 
 * 🤖 **AI-Generated Test Suites**: Instantly generates complete API lifecycles (GET, POST, PUT, DELETE, PATCH) with realistic mock payloads matching your endpoint structure.
 * ⚡ **Performance Benchmarking (`lunar stress`)**: Runs concurrent threads using Python thread pools to profile throughput (RPS) and latency percentiles (p50, p90, p95, p99) with real-time progress bars.
