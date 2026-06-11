@@ -1,2 +1,32 @@
+# Python environment
 .env
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build and packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Lunar local configurations and outputs
+lunar.config.json
+lunar_tests/
+lunar_reports/
 lunar_secret.json
+
+# Local presentation and summaries
+*.pptx
+lunar_project_summary.txt

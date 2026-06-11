@@ -1,28 +1,32 @@
 from lunar.utils.config import load_config, save_config
-from lunar.utils.printer import success, error
+from lunar.utils.printer import success, error, print_table, CYAN, RESET, BOLD
 
 def run(args):
     if not args:
-        error("Usage: lunar config set base_url <url> OR lunar config show")
+        error("Usage: lunar config set <key> <value> OR lunar config show")
         return
 
     action = args[0]
 
     config = load_config()
-    if config is None:
+    if not config:
         error("Run lunar init first")
         return
 
     # SHOW CONFIG
     if action == "show":
-        print("\n--- CONFIG ---")
-        print(config)
+        print(f"\n{CYAN}{BOLD}LUNAR SYSTEM CONFIGURATION{RESET}\n")
+        headers = ["PARAMETER", "VALUE"]
+        rows = []
+        for k, v in config.items():
+            rows.append([k, str(v)])
+        print_table(headers, rows)
         return
 
     # SET CONFIG
     if action == "set":
         if len(args) < 3:
-            error("Usage: lunar config set base_url <url>")
+            error("Usage: lunar config set <key> <value> (e.g., base_url <url> or hf_token <token>)")
             return
 
         key = args[1]
@@ -31,7 +35,7 @@ def run(args):
         config[key] = value
         save_config(config)
 
-        success(f"{key} set to {value}")
+        success(f"Config parameter '{key}' updated successfully")
         return
 
     error("Unknown config command")

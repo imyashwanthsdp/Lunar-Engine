@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lunar-system"
+name = "lunar-engine"
 version = "0.1.2"
 description = "AI-powered API testing CLI framework"
 authors = [{ name = "Yash" }]
@@ -18,3 +18,6 @@ dependencies = [
 
 [project.scripts]
 lunar = "lunar.cli:main"
+
+[tool.setuptools]
+packages = ["lunar", "lunar.commands", "lunar.core", "lunar.utils"]

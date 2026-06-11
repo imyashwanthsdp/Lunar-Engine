@@ -11,9 +11,12 @@ def run(args):
 
     config = load_config()
 
-    if config is None:
+    if not config:
         error("Run lunar init first")
         return
+
+    if "apis" not in config:
+        config["apis"] = []
 
     config["apis"].append({
         "endpoint": endpoint,

@@ -1,20 +1,21 @@
 import json
 import os
 import webbrowser
+from lunar.utils.printer import success, error, CYAN, RESET, BOLD
 
 
 def run(args):
     file_path = "lunar_reports/latest.json"
 
     if not os.path.exists(file_path):
-        print("❌ No report found. Run a test first using: lunar run")
+        error("No report found. Run a test first using: lunar run")
         return
 
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             results = json.load(f)
     except Exception as e:
-        print(f"❌ Error reading latest JSON report: {e}")
+        error(f"Error reading latest JSON report: {e}")
         return
 
     total = len(results)
@@ -284,9 +285,9 @@ def run(args):
     try:
         with open(report_path, "w", encoding="utf-8") as f:
             f.write(html)
-        print(f"✔ Report compiled successfully: {report_path}")
+        success(f"Report compiled successfully: {CYAN}{report_path}{RESET}")
 
         # Instantly open up the fresh report in user's default browser
         webbrowser.open("file://" + report_path)
     except Exception as e:
-        print(f"❌ Failed to write or launch HTML report file: {e}")
+        error(f"Failed to write or launch HTML report file: {e}")
