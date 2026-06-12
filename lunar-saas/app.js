@@ -620,14 +620,14 @@ function initContactForm() {
 }
 
 // ----------------------------------------------------
-// 8. Live Active Developers Counter (Real CounterAPI with Fallback)
+// 8. Live Active Developers Counter (Real CounterAPI via Serverless API)
 // ----------------------------------------------------
 function initViewerCount() {
   const countEl = document.getElementById('viewer-count-val');
   if (!countEl) return;
 
-  // Fetch the count from CounterAPI
-  fetch('https://api.counterapi.dev/v1/lunar-saas/visits/up')
+  // Fetch the count from our Vercel serverless function (same-origin request)
+  fetch('/api/visits')
     .then(response => {
       if (!response.ok) throw new Error('API Error');
       return response.json();
@@ -641,7 +641,7 @@ function initViewerCount() {
       }
     })
     .catch(error => {
-      console.warn('CounterAPI failed, falling back to simulated local visits:', error);
+      console.warn('Visits API failed, falling back to simulated local visits:', error);
       // Fallback: track visits in localStorage + base simulated count
       let visits = parseInt(localStorage.getItem('lunar_simulated_visits') || '384', 10);
       visits += 1;
