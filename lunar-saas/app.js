@@ -620,45 +620,32 @@ function initContactForm() {
 }
 
 // ----------------------------------------------------
-// 8. Live Active Developers Counter (Simulated Stream)
+// 8. Live Active Developers Counter (Real CounterAPI with Fallback)
 // ----------------------------------------------------
 function initViewerCount() {
   const countEl = document.getElementById('viewer-count-val');
   if (!countEl) return;
 
-  // Initialize with a realistic number of active users
-  let activeDevs = Math.floor(Math.random() * 41) + 35; // Between 35 and 75
-  countEl.textContent = activeDevs;
-
-  // Simulate updates every 4 to 8 seconds
-  const updateCounter = () => {
-    // Random step between -3 and +3
-    const step = Math.floor(Math.random() * 7) - 3;
-    activeDevs += step;
-
-    // Keep it in a realistic bounding range [30, 90]
-    if (activeDevs < 30) activeDevs = 32;
-    if (activeDevs > 90) activeDevs = 87;
-
-    // Smoothly transition numbers
-    countEl.style.opacity = 0;
-    setTimeout(() => {
-      countEl.textContent = activeDevs;
-      countEl.style.opacity = 1;
-    }, 200);
-  };
-
-  // Add transition styling dynamically
-  countEl.style.transition = 'opacity 0.2s ease-in-out';
-
-  // Randomize intervals to feel organic
-  const loop = () => {
-    const nextInterval = Math.floor(Math.random() * 4000) + 4000; // 4 to 8 seconds
-    setTimeout(() => {
-      updateCounter();
-      loop();
-    }, nextInterval);
-  };
-
-  loop();
+  // Fetch the count from CounterAPI
+  fetch('https://api.counterapi.dev/v1/lunar-saas/visits/up')
+    .then(response => {
+      if (!response.ok) throw new Error('API Error');
+      return response.json();
+    })
+    .then(data => {
+      if (data && typeof data.value === 'number') {
+        // Format the number with commas
+        countEl.textContent = data.value.toLocaleString();
+      } else {
+        throw new Error('Invalid response data');
+      }
+    })
+    .catch(error => {
+      console.warn('CounterAPI failed, falling back to simulated local visits:', error);
+      // Fallback: track visits in localStorage + base simulated count
+      let visits = parseInt(localStorage.getItem('lunar_simulated_visits') || '384', 10);
+      visits += 1;
+      localStorage.setItem('lunar_simulated_visits', visits);
+      countEl.textContent = visits.toLocaleString();
+    });
 }
