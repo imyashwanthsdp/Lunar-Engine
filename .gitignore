@@ -30,3 +30,8 @@ lunar_secret.json
 # Local presentation and summaries
 *.pptx
 lunar_project_summary.txt
+
+# Node.js and Vercel
+node_modules/
+.vercel/
+lunar-saas/dist/

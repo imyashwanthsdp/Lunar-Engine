@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Engine | AI-Powered API Testing & Stress Benchmarking</title>
+  <meta name="description" content="Lunar Engine is an intelligent, developer-first command-line framework for automating testing, schema discovery, and multithreaded benchmarking of REST APIs.">
+  <meta name="keywords" content="API testing, benchmarking, CLI, automation, LLM testing, API schema, stress test, dark mode report, developer tools">
+  <meta name="author" content="Lunar Engine team">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <!-- Glowing Background Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="logo-link">
+        <svg class="logo-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 10.9 4.22 9.86 4.63 8.9C6.16 11.23 8.9 12.8 12 12.8C15.1 12.8 17.84 11.23 19.37 8.9C19.78 9.86 20 10.9 20 12C20 16.42 16.42 20 12 20Z" fill="url(#logo-grad)"/>
+          <defs>
+            <linearGradient id="logo-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#a855f7" />
+              <stop offset="1" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">LUNAR <span class="logo-highlight">ENGINE</span></span>
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="#features" class="nav-item">Features</a>
+        <a href="#pricing" class="nav-item">Pricing</a>
+        <a href="#contact" class="nav-item">Contact</a>
+        <a href="#documentation-section" class="nav-item" id="nav-docs-link">Documentation</a>
+      </nav>
+      
+      <div class="header-socials">
+        <a href="https://github.com/imyashwanthsdp" target="_blank" class="social-icon-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="social-svg-header"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/yashwanth-reddy-sodanapalli-a7aa6428a" target="_blank" class="social-icon-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="social-svg-header"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9H7.12v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.86 3.39-1.86 3.63 0 4.3 2.39 4.3 5.5v6.25z"/></svg>
+        </a>
+      </div>
+      
+      <div class="header-actions">
+        <a href="#pricing" class="btn btn-secondary nav-cta">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="badge-container">
+          <span class="hero-badge">
+            <svg class="badge-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 2.5-2 2.5s1.24-.5 2.5-2c2-1.5 4.5-2.5 7-2.5l3-3-9-9-1 1 5 5-3 3c0-2.5 1-5 2.5-7z"/><path d="M12 12l9-9-3 12-6-3z"/><path d="M9 15l-3-3"/></svg>
+            AI-Powered API Testing
+          </span>
+        </div>
+        <h1 class="hero-title">
+          API Testing & Benchmarking <br>
+          <span class="gradient-text">Engineered for Humans</span>
+        </h1>
+        <p class="hero-subtitle">
+          Automate schema discovery, generate deep LLM-based test suites, run concurrent stress tests, and compile dashboard reports directly from your terminal.
+        </p>
+        
+        <div class="hero-ctas">
+          <button class="btn btn-primary" id="hero-btn-free">Explore Free CLI</button>
+          <button class="btn btn-glowing" id="hero-btn-pro">Join Pro Waitlist</button>
+        </div>
+
+        <!-- Terminal Simulator Grid -->
+        <div class="terminal-wrapper">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">lunar-cli --simulated</div>
+            <div class="terminal-actions">
+              <span class="terminal-action-badge">Interactive</span>
+            </div>
+          </div>
+          <div class="terminal-body" id="hero-terminal">
+            <div class="terminal-line text-muted">// Click a command below to simulate Lunar CLI in action:</div>
+            <div class="terminal-btn-row">
+              <button class="btn-term-cmd" data-cmd="init">lunar init</button>
+              <button class="btn-term-cmd" data-cmd="gen">lunar gen /users</button>
+              <button class="btn-term-cmd" data-cmd="stress">lunar stress /users 100 20</button>
+              <button class="btn-term-cmd" data-cmd="run">lunar run</button>
+            </div>
+            <div class="terminal-output" id="terminal-sim-output">
+              <span class="term-prompt">lunar-cli $</span> <span class="term-cursor">_</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Grid -->
+    <section class="features-section" id="features">
+      <div class="section-header">
+        <h2 class="section-title">High-Tech CLI Testing Pipeline</h2>
+        <p class="section-desc">Lunar replaces complex assertion suites and load test scripting with one unified ecosystem.</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon-wrapper">
+            <svg class="feature-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 15h.01M16 15h.01"/></svg>
+          </div>
+          <h3>AI-Generated Test Suites</h3>
+          <p>Generate complete lifecycle suites with authentic payloads using HuggingFace serverless AI models.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon-wrapper">
+            <svg class="feature-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Concurrent Stress Tests</h3>
+          <p>Utilize raw Python multithreading to measure latency percentiles and RPS system capacity.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon-wrapper">
+            <svg class="feature-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>Schema Discovery</h3>
+          <p>Automatically map JSON data structures, key-value configurations, and HTTP response headers.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon-wrapper">
+            <svg class="feature-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Premium Dashboards</h3>
+          <p>Convert your CLI test execution logs into dark-themed, browser-ready static HTML dashboard reports.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-header">
+        <h2 class="section-title">Developer Pricing Plans</h2>
+        <p class="section-desc">Get started instantly with the command-line, or queue for our unified cloud orchestration.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Free Tier Card -->
+        <div class="pricing-card" id="pricing-card-free">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <span class="plan-badge">Open Source</span>
+            <h3 class="plan-name">Lunar CLI</h3>
+            <div class="plan-price">$0<span class="price-period">/ forever</span></div>
+            <p class="plan-desc">An intelligent, local CLI tool to probe, auto-generate, run, and benchmark API endpoints.</p>
+            
+            <ul class="plan-features">
+              <li>
+                <svg class="plan-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                AI-Powered suite generator (lunar gen)
+              </li>
+              <li>
+                <svg class="plan-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                High-speed multithreaded benchmarking
+              </li>
+              <li>
+                <svg class="plan-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Full JSON validation assertions engine
+              </li>
+              <li>
+                <svg class="plan-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Native HTML dashboard compiler
+              </li>
+              <li>
+                <svg class="plan-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Local project-scoped settings
+              </li>
+            </ul>
+            
+            <button class="btn btn-primary btn-full" id="btn-free-tier">Explore Documentation</button>
+          </div>
+        </div>
+
+        <!-- Pro Tier Card -->
+        <div class="pricing-card pro-card" id="pricing-card-pro">
+          <div class="card-glow-pro"></div>
+          <div class="card-content">
+            <div class="pro-header-row">
+              <span class="plan-badge badge-purple">Enterprise</span>
+              <span class="coming-soon-pill">Coming Soon</span>
+            </div>
+            <h3 class="plan-name">Lunar Cloud</h3>
+            <div class="plan-price">Pro<span class="price-period"> / waitlist open</span></div>
+            <p class="plan-desc">Distributed load infrastructure and collaborative workflows for scaling engineering teams.</p>
+            
+            <ul class="plan-features">
+              <li>
+                <svg class="plan-check-svg check-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Distributed stress nodes (100k+ RPS)
+              </li>
+              <li>
+                <svg class="plan-check-svg check-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Collaborative team testing portals
+              </li>
+              <li>
+                <svg class="plan-check-svg check-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Real-time continuous test triggers
+              </li>
+              <li>
+                <svg class="plan-check-svg check-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Multi-region latency profiles
+              </li>
+              <li>
+                <svg class="plan-check-svg check-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Slack, Teams & Webhook integrations
+              </li>
+            </ul>
+            
+            <button class="btn btn-glowing btn-full" id="btn-pro-tier">Join Pro Waitlist</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-desc">Have questions about the Lunar Engine or integrating the CLI with your systems? Get in touch with us.</p>
+      </div>
+      
+      <div class="contact-grid">
+        <!-- Contact Info & Creator profile -->
+        <div class="contact-info-card">
+          <div class="creator-profile">
+            <h3>Yashwanth Reddy Sodanapalli</h3>
+            <p class="creator-title">Project Creator & Core Architect</p>
+            <p class="creator-bio">Building developer tooling, high-performance benchmarking agents, and intelligent automated schema engines.</p>
+            
+            <div class="creator-links">
+              <a href="https://www.linkedin.com/in/yashwanth-reddy-sodanapalli-a7aa6428a" target="_blank" class="btn btn-secondary contact-social-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-svg-btn"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9H7.12v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.86 3.39-1.86 3.63 0 4.3 2.39 4.3 5.5v6.25z"/></svg>
+                LinkedIn Profile
+              </a>
+              <a href="https://github.com/imyashwanthsdp" target="_blank" class="btn btn-secondary contact-social-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-svg-btn"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                GitHub Profile
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-card">
+          <div id="contact-form-container">
+            <form id="contact-form" onsubmit="return false;">
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input type="text" id="contact-name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" placeholder="you@example.com" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" placeholder="What is this regarding?" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full" id="contact-submit">Send Message</button>
+            </form>
+          </div>
+          
+          <div id="contact-success-container" class="hidden">
+            <div class="success-icon-wrapper">
+              <svg class="success-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4>Message Sent Successfully</h4>
+            <p>Thank you for reaching out. We have logged your request and will follow up shortly via email.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Immersive Documentation Section -->
+    <section class="docs-section hidden" id="documentation-section">
+      <div class="docs-container">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar">
+          <div class="docs-sidebar-header">
+            <h4>
+              <svg class="sidebar-header-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"/></svg>
+              API Documentation
+            </h4>
+            <div class="docs-version">v1.1.0 (CLI)</div>
+          </div>
+          <nav class="docs-sidebar-nav">
+            <button class="docs-nav-link active" data-target="docs-sec-install" id="docs-nav-install">Installation</button>
+            <button class="docs-nav-link" data-target="docs-sec-init" id="docs-nav-init">Quick Start (Init)</button>
+            <button class="docs-nav-link" data-target="docs-sec-gen" id="docs-nav-gen">AI suite gen</button>
+            <button class="docs-nav-link" data-target="docs-sec-run" id="docs-nav-run">Running Tests</button>
+            <button class="docs-nav-link" data-target="docs-sec-stress" id="docs-nav-stress">Stress Benchmarking</button>
+            <button class="docs-nav-link" data-target="docs-sec-report" id="docs-nav-report">Visual Dashboards</button>
+            <button class="docs-nav-link" data-target="docs-sec-assertions" id="docs-nav-assertions">Advanced Assertions</button>
+            <button class="docs-nav-link" data-target="docs-sec-commands" id="docs-nav-commands">CLI Command Map</button>
+          </nav>
+        </aside>
+
+        <!-- Main Docs Content Area -->
+        <div class="docs-content-wrapper">
+          <!-- Documentation Pages -->
+          <div class="docs-pages">
+            
+            <!-- Section: Installation -->
+            <article class="docs-page active-page" id="docs-sec-install">
+              <h2>Installation Guide</h2>
+              <p>Lunar CLI is packaged and distributed as a python library. You can install it on any system running Python 3.8+.</p>
+              
+              <h3>Prerequisites</h3>
+              <ul>
+                <li>Python 3.8 or higher</li>
+                <li>Pip package manager</li>
+                <li>An active internet connection</li>
+              </ul>
+              
+              <h3>Standard Installation</h3>
+              <p>Install the official release from the Python Package Index (PyPI):</p>
+              <div class="code-block-container">
+                <pre><code>pip install lunar-engine</code></pre>
+                <button class="btn-copy-code" data-clipboard="pip install lunar-engine">Copy</button>
+              </div>
+
+              <h3>Verify Installation</h3>
+              <p>Ensure the command utility is registered in your PATH terminal variables:</p>
+              <div class="code-block-container">
+                <pre><code>lunar</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar">Copy</button>
+              </div>
+              <p>This will output the primary CLI menu banner, showing that the system has initialized successfully.</p>
+            </article>
+
+            <!-- Section: Quick Start -->
+            <article class="docs-page" id="docs-sec-init">
+              <h2>Quick Start Guide</h2>
+              <p>A Lunar testing workspace is built around the configuration layout defined in `lunar.config.json` inside your root directory.</p>
+              
+              <h3>1. Initialize Project Workspace</h3>
+              <p>Run the initialization wizard to guide you through creating your project config:</p>
+              <div class="code-block-container">
+                <pre><code>lunar init</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar init">Copy</button>
+              </div>
+              <p>You will be prompted to enter the API base URL (e.g., <code>https://api.example.com</code>) and an optional HuggingFace token for LLM operations.</p>
+              
+              <h3>2. Manage Active Configurations</h3>
+              <p>Review active keys, routes, and credentials loaded by Lunar:</p>
+              <div class="code-block-container">
+                <pre><code>lunar config show</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar config show">Copy</button>
+              </div>
+              
+              <p>Change your configuration variables dynamically via setter command prompts:</p>
+              <div class="code-block-container">
+                <pre><code>lunar config set base_url https://api.my-app.com
+lunar config set hf_token hf_abc123XyZ</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar config set base_url https://api.my-app.com&#10;lunar config set hf_token hf_abc123XyZ">Copy</button>
+              </div>
+            </article>
+
+            <!-- Section: AI Suite Gen -->
+            <article class="docs-page" id="docs-sec-gen">
+              <h2>AI-Powered suite generation</h2>
+              <p>Lunar leverages serverless LLM logic to introspect endpoint structures, map nested payload shapes, and craft logical testing scripts.</p>
+              
+              <h3>Endpoint Probing and Mapping</h3>
+              <p>By hitting live endpoints with schema analyzer hooks, Lunar identifies if the endpoint structure supports REST queries, filters out boilerplate schemas, and sets up validation assertions.</p>
+              
+              <h3>Generate Test Suites</h3>
+              <p>Execute tests generation on any route path registered under your base URL configuration:</p>
+              <div class="code-block-container">
+                <pre><code>lunar gen /users</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar gen /users">Copy</button>
+              </div>
+              <p>This probes <code>/users</code>, translates schema components with LLMs, and registers a CRUD testing lifecycle (GET, POST, PUT, DELETE) inside <code>lunar_tests/users.json</code>.</p>
+              
+              <h3>Method Filtering</h3>
+              <p>Restrict generation suites to look for specific target operations:</p>
+              <div class="code-block-container">
+                <pre><code>lunar gen /users POST</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar gen /users POST">Copy</button>
+              </div>
+            </article>
+
+            <!-- Section: Running Tests -->
+            <article class="docs-page" id="docs-sec-run">
+              <h2>Executing Test Suites</h2>
+              <p>Run locally registered test cases to validate endpoints schema, query parameters, payloads, and execution latency thresholds.</p>
+              
+              <h3>Launch Workspace Suites</h3>
+              <p>Triggers execution workflows across all files matching target formats inside `lunar_tests/` folder:</p>
+              <div class="code-block-container">
+                <pre><code>lunar run</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar run">Copy</button>
+              </div>
+              
+              <h3>Interactive CLI Console Audits</h3>
+              <p>During the run operation, Lunar renders high-contrast terminal grids summarizing check assertions:</p>
+              <ul>
+                <li><strong>HTTP Status Code validations</strong> (e.g. 200 OK vs 404 Not Found)</li>
+                <li><strong>Response Body validations</strong> (text matching check, JSON key inspections)</li>
+                <li><strong>Data type verification</strong> (checks that <code>id</code> is int, <code>username</code> is string)</li>
+                <li><strong>SLA Latency checks</strong> (warns if response times cross threshold tolerances)</li>
+              </ul>
+            </article>
+
+            <!-- Section: Stress Benchmarking -->
+            <article class="docs-page" id="docs-sec-stress">
+              <h2>Stress Benchmarking (lunar stress)</h2>
+              <p>Benchmark system capacities, bottlenecks, and performance statistics utilizing multi-threaded HTTP request loops.</p>
+              
+              <h3>Executing Stress Benchmarks</h3>
+              <p>Specify the target endpoint route path, the total request count to execute, and concurrency workers count:</p>
+              <div class="code-block-container">
+                <pre><code>lunar stress [route] [requests_count] [concurrency]</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar stress /users 100 20">Copy</button>
+              </div>
+              
+              <h3>Example Usage</h3>
+              <p>Distribute 100 HTTP operations across 20 concurrent threads against <code>/users</code> endpoint:</p>
+              <div class="code-block-container">
+                <pre><code>lunar stress /users 100 20</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar stress /users 100 20">Copy</button>
+              </div>
+              
+              <h3>Aggregated Benchmarking Metrics</h3>
+              <p>Once completion progress bar terminates, Lunar returns detailed profiling results:</p>
+              <ul>
+                <li><strong>Throughput (RPS):</strong> Realized actions processed per second.</li>
+                <li><strong>Latency Percentiles:</strong> Median response time (p50) along with SLA p90, p95, and p99 metrics.</li>
+                <li><strong>Status Codes ratios:</strong> Distribution statistics mapping success codes vs server-failure issues.</li>
+              </ul>
+            </article>
+
+            <!-- Section: Visual Dashboards -->
+            <article class="docs-page" id="docs-sec-report">
+              <h2>Visual Dashboard Reporting</h2>
+              <p>Export historical test runs and CLI performance outputs to local responsive HTML dashboard reports.</p>
+              
+              <h3>Generate Dashboard Reports</h3>
+              <p>Run the report generator to parse your execution sqlite databases and generate dashboards:</p>
+              <div class="code-block-container">
+                <pre><code>lunar report</code></pre>
+                <button class="btn-copy-code" data-clipboard="lunar report">Copy</button>
+              </div>
+              
+              <h3>Core Features of the Visual Dashboard</h3>
+              <ul>
+                <li><strong>Interactive Charts:</strong> Visual line and bar charts tracking performance changes.</li>
+                <li><strong>Details Grid:</strong> Dropdown modules detailing individual request headers, assertions status, and payloads.</li>
+                <li><strong>Failure Filter:</strong> Quickly filter test metrics to spot failed requests or latency outliers.</li>
+                <li><strong>Auto Launch:</strong> Instantly opens in your native system browser on command completion.</li>
+              </ul>
+            </article>
+
+            <!-- Section: Advanced Assertions -->
+            <article class="docs-page" id="docs-sec-assertions">
+              <h2>Advanced Assertions Configuration</h2>
+              <p>Customize assertion schemas manually inside JSON workspace test cases to lock down critical REST APIs properties.</p>
+              
+              <h3>Sample Configuration Schema</h3>
+              <div class="code-block-container">
+                <pre><code class="language-json">{
+  "name": "Verify user details update",
+  "endpoint": "/users/1",
+  "method": "PUT",
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer sample-token"
+  },
+  "body": {
+    "username": "jane_doe",
+    "email": "jane@example.com"
+  },
+  "assertions": {
+    "status_code": 200,
+    "content_type": "application/json",
+    "contains_text": ["jane_doe"],
+    "json_keys": ["id", "username", "email"],
+    "json_types": {
+      "id": "int",
+      "username": "string"
+    },
+    "max_response_time_ms": 1500
+  }
+}</code></pre>
+                <button class="btn-copy-code" data-clipboard='{&#10;  "name": "Verify user details update",&#10;  "endpoint": "/users/1",&#10;  "method": "PUT",&#10;  "headers": {&#10;    "Content-Type": "application/json",&#10;    "Authorization": "Bearer sample-token"&#10;  },&#10;  "body": {&#10;    "username": "jane_doe",&#10;    "email": "jane@example.com"&#10;  },&#10;  "assertions": {&#10;    "status_code": 200,&#10;    "content_type": "application/json",&#10;    "contains_text": ["jane_doe"],&#10;    "json_keys": ["id", "username", "email"],&#10;    "json_types": {&#10;      "id": "int",&#10;      "username": "string"&#10;    },&#10;    "max_response_time_ms": 1500&#10;  }&#10;}'>Copy</button>
+              </div>
+
+              <h3>Live JSON assertion schema validator</h3>
+              <p class="docs-playground-subtitle">Paste or edit your assertion config below to validate it against the Lunar Engine assertion spec.</p>
+              <div class="assertion-validator-playground">
+                <textarea id="assertion-json-input" placeholder="Paste JSON test configuration here...">[
+  {
+    "name": "Verify successful update of user details",
+    "endpoint": "/users/1",
+    "method": "PUT",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "username": "jane_doe"
+    },
+    "assertions": {
+      "status_code": 200,
+      "content_type": "application/json",
+      "contains_text": ["jane_doe"],
+      "json_types": {
+        "username": "string"
+      },
+      "max_response_time_ms": 1500
+    }
+  }
+]</textarea>
+                <div class="playground-control-row">
+                  <button class="btn btn-secondary" id="btn-validate-schema">Validate Config</button>
+                  <span id="validator-status" class="status-badge status-idle">Ready to validate</span>
+                </div>
+                <div id="validator-details" class="validator-details-box text-muted">
+                  Click 'Validate Config' to check compliance with the Lunar Engine assertion spec.
+                </div>
+              </div>
+            </article>
+
+            <!-- Section: CLI Command Map -->
+            <article class="docs-page" id="docs-sec-commands">
+              <h2>CLI Command Map</h2>
+              <p>Quick index of all commands supported by the Lunar CLI framework. Use the filter to search commands.</p>
+              
+              <div class="filter-container">
+                <input type="text" id="command-search-input" placeholder="Type command name (e.g. stress, init) to filter...">
+              </div>
+
+              <div class="table-scroll-container">
+                <table class="command-ref-table" id="command-reference-table">
+                  <thead>
+                    <tr>
+                      <th>Command</th>
+                      <th>Usage Syntax</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar</code></td>
+                      <td class="usage-cell"><code>lunar</code></td>
+                      <td>Displays the main console greeting banner and active menus panel.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar init</code></td>
+                      <td class="usage-cell"><code>lunar init</code></td>
+                      <td>Runs the workspace generator helper to create local project configurations.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar config show</code></td>
+                      <td class="usage-cell"><code>lunar config show</code></td>
+                      <td>Renders active environment variables, base URLs, and tokens in a grid matrix.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar config set</code></td>
+                      <td class="usage-cell"><code>lunar config set &lt;key&gt; &lt;val&gt;</code></td>
+                      <td>Modifies or configures parameter options (e.g., base_url, hf_token).</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar add</code></td>
+                      <td class="usage-cell"><code>lunar add &lt;endpoint&gt; &lt;method&gt;</code></td>
+                      <td>Manually registers a specific endpoint query index.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar gen</code></td>
+                      <td class="usage-cell"><code>lunar gen &lt;endpoint&gt; [METHOD]</code></td>
+                      <td>Invokes schema engines and drafts serverless AI-driven validation test cases.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar run</code></td>
+                      <td class="usage-cell"><code>lunar run</code></td>
+                      <td>Runs every registered workspace JSON test suite.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar stress</code></td>
+                      <td class="usage-cell"><code>lunar stress &lt;route&gt; [reqs] [threads]</code></td>
+                      <td>Starts multithreaded benchmarking runs for API load and percentile latency.</td>
+                    </tr>
+                    <tr>
+                      <td class="cmd-cell"><code>lunar report</code></td>
+                      <td class="usage-cell"><code>lunar report</code></td>
+                      <td>Parses run histories and compiles interactive visual dashboards locally.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            
+          </div>
+
+          <!-- Documentation Pagination Footer -->
+          <footer class="docs-nav-footer">
+            <button class="btn btn-secondary" id="docs-btn-prev">← Previous</button>
+            <span class="docs-pagination-indicator" id="docs-page-num">1 of 8</span>
+            <button class="btn btn-secondary" id="docs-btn-next">Next →</button>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Waitlist Modal -->
+  <div class="modal-backdrop hidden" id="waitlist-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Lunar Cloud Waitlist</h3>
+        <button class="btn-close-modal" id="btn-close-waitlist">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Sign up to receive early beta access, pricing announcements, and launch updates for our distributed load testing cloud service.</p>
+        
+        <div id="waitlist-form-container">
+          <form id="waitlist-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="waitlist-email">Email Address</label>
+              <input type="email" id="waitlist-email" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-glowing btn-full" id="waitlist-submit">Request Early Invitation</button>
+          </form>
+        </div>
+
+        <div id="waitlist-success-container" class="hidden">
+          <div class="success-icon-wrapper">
+            <svg class="success-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>You are on the list!</h4>
+          <p>We've reserved your spot on the waitlist. You will receive progress notifications as we roll out regional cloud benchmark nodes.</p>
+          <div class="referral-code-box">
+            Your Waitlist Position: <strong id="waitlist-position">#3,492</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-text">LUNAR <span class="logo-highlight">ENGINE</span></span>
+        <p>Smart open-source REST API testing framework.</p>
+        <div class="footer-social-row">
+          <a href="https://github.com/imyashwanthsdp" target="_blank" class="social-icon-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="social-svg-footer"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/yashwanth-reddy-sodanapalli-a7aa6428a" target="_blank" class="social-icon-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="social-svg-footer"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9H7.12v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.86 3.39-1.86 3.63 0 4.3 2.39 4.3 5.5v6.25z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a href="#documentation-section">Docs</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Lunar Engine. MIT License. Developed by Yashwanth Reddy Sodanapalli.
+    </div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
