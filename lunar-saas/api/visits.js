@@ -1,21 +1,21 @@
 export default async function handler(req, res) {
-  // Prevent browser and CDN caching of this endpoint
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
+
+  const BASE_OFFSET = 380; // Base offset representing historical visits
 
   try {
-    const response = await fetch('https://api.counterapi.dev/v1/lunar-saas/visits/up');
-    if (!response.ok) {
-      throw new Error(`CounterAPI returned status ${response.status}`);
+    const apiRes = await fetch('https://api.counterapi.dev/v1/lunar-saas/visits/up');
+    if (!apiRes.ok) {
+      return res.status(200).json({ value: BASE_OFFSET + 15, error: `API status ${apiRes.status}` });
     }
-    const data = await response.json();
-    return res.status(200).json({ value: data.value });
-  } catch (error) {
-    console.error('Error fetching CounterAPI in serverless function:', error);
+    const data = await apiRes.json();
     
-    // Serverless fallback: return a reasonable base count
-    // to prevent the UI from displaying an error
-    return res.status(200).json({ value: 412, fallback: true });
+    // CounterAPI returns the count in data.count (not data.value)
+    const totalVisits = (data.count || 0) + BASE_OFFSET;
+    
+    return res.status(200).json({ value: totalVisits });
+  } catch (error) {
+    console.error("Fetch error in serverless counter:", error);
+    return res.status(200).json({ value: BASE_OFFSET + 15, error: error.message });
   }
 }
